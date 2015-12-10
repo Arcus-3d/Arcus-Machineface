@@ -7,14 +7,8 @@ import Machinekit.VideoView 1.0
 Tab {
     id: tab
     title: qsTr("Video")
-    active: true
 
     Item {
-        Service {
-            id: videoService
-            type: "video"
-        }
-
         MjpegStreamerClient {
             property bool videoEnabled: false
 
@@ -28,23 +22,23 @@ Tab {
             Label {
                 anchors.right: parent.right
                 anchors.bottom: parent.bottom
-                anchors.margins: Screen.logicalPixelDensity
+                anchors.margins: Screen.pixelDensity
                 text: parent.fps
             }
 
             Label {
                 anchors.left: parent.left
                 anchors.bottom: parent.bottom
-                anchors.margins: Screen.logicalPixelDensity
+                anchors.margins: Screen.pixelDensity
                 text: parent.time.toTimeString()
             }
 
-            Image {
+            FontIcon {
                 anchors.centerIn: parent
-                width: Screen.logicalPixelDensity * 30
-                height: width
+                font.pixelSize: Screen.pixelDensity * 30
                 visible: !parent.videoEnabled
-                source: "icons/ic_play_arrow_white_48dp.png"
+                color: "white"
+                text: "\ue037"
             }
 
             MouseArea {

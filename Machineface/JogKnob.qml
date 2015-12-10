@@ -10,7 +10,6 @@ Knob {
     style: "Pie"
     pieType: "Flat"
     suffix: ""
-    textColor: systemPalette.text
     foregroundColor: Qt.lighter(root.color, 1.2)
     borderColor: Qt.darker(root.color, 1.1)
     backgroundColor: systemPalette.light
@@ -26,6 +25,7 @@ Knob {
         anchors.top: parent.top
         anchors.leftMargin: -parent.width * 0.1
         font.bold: true
+        font.pixelSize: root.font.pixelSize
         text: root.axisName
     }
 }

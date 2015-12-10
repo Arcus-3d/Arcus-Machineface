@@ -10,17 +10,9 @@ import Machinekit.Service 1.0
 ColumnLayout {
     id: root
     property string labelName: "Gantry Configuration"
-    visible: halRemoteComponent.ready && !halRemoteComponent.error
+    property bool wasConnected: false
 
-    Service {
-        id: halrcompService
-        type: "halrcomp"
-    }
-
-    Service {
-        id: halrcmdService
-        type: "halrcmd"
-    }
+    visible: halRemoteComponent.ready || wasConnected
 
     HalRemoteComponent {
         id: halRemoteComponent
@@ -31,6 +23,7 @@ ColumnLayout {
         containerItem: container
         create: false
         onErrorStringChanged: console.log(errorString)
+        onConnectedChanged: root.wasConnected = true
     }
 
     ColumnLayout {
@@ -50,6 +43,7 @@ ColumnLayout {
             }
 
             HalSpinBox {
+                Layout.fillWidth: true
                 name: "offset-left"
                 suffix: "mm"
                 minimumValue: 0.0
@@ -64,6 +58,7 @@ ColumnLayout {
             }
 
             HalSpinBox {
+                Layout.fillWidth: true
                 name: "offset-right"
                 suffix: "mm"
                 minimumValue: 0.0

@@ -16,7 +16,7 @@ ColumnLayout {
 
     TemperatureControl {
         componentName: "fdm-hbp"
-        labelName: "Heated Bed Temp"
+        labelName: "Bed Temp"
         logHeight: parent.height * 0.25
     }
 
@@ -25,28 +25,31 @@ ColumnLayout {
         labelName: "Extruder Temp"
         logHeight: parent.height * 0.25
     }
-
     Repeater {
         model: 6
         WeightControl {
             componentName: "fdm-ew" + index
             labelName: "Extruder " + index + " Weight"
+        	logHeight: parent.height * 0.25
         }
     }
     
     WeightControl {
         componentName: "fdm-m0"
         labelName: "Mixer Speed"
+       	logHeight: parent.height * 0.25
     }
 
     FanControl {
         componentName: "fdm-f0"
         labelName: "Fan Speed"
+       	logHeight: parent.height * 0.25
     }
 
     WeightControl {
         componentName: "fdm-c0"
         labelName: "Cooling Pump Speed"
+       	logHeight: parent.height * 0.25
     }
 
     Item {

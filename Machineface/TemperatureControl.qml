@@ -18,18 +18,9 @@ ColumnLayout {
     property double gaugeZ0BorderValue: 50.0
     property double gaugeZ1BorderValue: spinMaximumValue * 0.9
     property int logHeight: 200
+    property bool wasConnected: false
 
-    visible: halRemoteComponent.ready && !halRemoteComponent.error
-
-    Service {
-        id: halrcompService
-        type: "halrcomp"
-    }
-
-    Service {
-        id: halrcmdService
-        type: "halrcmd"
-    }
+    visible: halRemoteComponent.connected || wasConnected
 
     HalRemoteComponent {
         id: halRemoteComponent
@@ -40,6 +31,7 @@ ColumnLayout {
         containerItem: container
         create: false
         onErrorStringChanged: console.log(errorString)
+        onConnectedChanged: tempItem.wasConnected = true
     }
 
     ColumnLayout {
@@ -180,7 +172,8 @@ ColumnLayout {
                     }
                     else {
                         tempSetSpin.value = 0
-                    }                }
+                    }
+                }
 
                 Binding {
                     target: onOffSwitch

@@ -10,17 +10,9 @@ import Machinekit.Service 1.0
 ColumnLayout {
     id: root
     property string labelName: "Velocity Extrusion"
-    visible: halRemoteComponent.ready && !halRemoteComponent.error
+    property bool wasConnected: false
 
-    Service {
-        id: halrcompService
-        type: "halrcomp"
-    }
-
-    Service {
-        id: halrcmdService
-        type: "halrcmd"
-    }
+    visible: halRemoteComponent.ready || wasConnected
 
     HalRemoteComponent {
         id: halRemoteComponent
@@ -31,6 +23,7 @@ ColumnLayout {
         containerItem: container
         create: false
         onErrorStringChanged: console.log(errorString)
+        onConnectedChanged: root.wasConnected = true
     }
 
     ColumnLayout {
@@ -50,6 +43,7 @@ ColumnLayout {
             }
 
             HalSpinBox {
+                Layout.fillWidth: true
                 name: "filament-dia"
                 suffix: "mm"
                 minimumValue: 0.0
@@ -64,6 +58,7 @@ ColumnLayout {
             }
 
             HalSpinBox {
+                Layout.fillWidth: true
                 name: "retract-vel"
                 suffix: "mm/s"
                 minimumValue: 0.0
@@ -78,6 +73,7 @@ ColumnLayout {
             }
 
             HalSpinBox {
+                Layout.fillWidth: true
                 name: "retract-len"
                 suffix: "mm"
                 minimumValue: 0.0
@@ -92,6 +88,7 @@ ColumnLayout {
             }
 
             HalSpinBox {
+                Layout.fillWidth: true
                 name: "extrude-scale"
                 minimumValue: 0.0
                 maximumValue: 10.0
@@ -105,6 +102,7 @@ ColumnLayout {
             }
 
             HalSpinBox {
+                Layout.fillWidth: true
                 name: "accel-adj-gain"
                 minimumValue: 0.0
                 maximumValue: 10.0
