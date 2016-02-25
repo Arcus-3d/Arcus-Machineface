@@ -41,7 +41,7 @@ ApplicationWindow {
         id: connectionWindow
 
         anchors.fill: parent
-        defaultTitle: "Auric-Machineface"
+        defaultTitle: "Machineface"
         autoSelectInstance: false
         autoSelectApplication: false
         localVisible: true

@@ -38,36 +38,15 @@ ColumnLayout {
             font.bold: true
         }
 
-        Gauge {
-            id: fanSpeedGauge
-            Layout.fillWidth: true
-            value: fanSpeedSlider.value
-            suffix: "%"
-            valueLabel.text: (value / 2.55 ).toFixed(decimals) + suffix
-            decimals: 0
-            minimumValueVisible: false
-            maximumValueVisible: false
-            minimumValue: 0
-            maximumValue: 255
-            z0BorderValue: 1
-            z1BorderValue: 1
-            z0Color: "#C9FDFF"
-            z1Color: "#9ADAFF"
-            z2Color: "#9ADAFF"
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: fanSpeedSlider.visible = !fanSpeedSlider.visible
-                cursorShape: "PointingHandCursor"
-            }
-        }
-
         HalSlider {
             id: fanSpeedSlider
             Layout.fillWidth: true
             name: "set"
             halPin.direction: HalPin.IO
-            visible: false
+            suffix: "%"
+            valueLabel.text: (value / 2.55 ).toFixed(decimals) + suffix
+            decimals: 0
+            visible: true 
             minimumValue: 0
             maximumValue: 255
             stepSize: 1
@@ -75,7 +54,7 @@ ColumnLayout {
             tickmarksEnabled: false
             minimumValueVisible: false
             maximumValueVisible: false
-            valueVisible: false
+            valueVisible: true
         }
     }
 }

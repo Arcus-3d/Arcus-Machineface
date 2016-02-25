@@ -12,18 +12,9 @@ ColumnLayout {
     id: root
     property string componentName: "fdm-w0"
     property string labelName: "Weight"
+    property bool wasConnected: false
 
-    visible: halRemoteComponent.ready && !halRemoteComponent.error
-
-    Service {
-        id: halrcompService
-        type: "halrcomp"
-    }
-
-    Service {
-        id: halrcmdService
-        type: "halrcmd"
-    }
+    visible: halRemoteComponent.connected || wasConnected
 
     HalRemoteComponent {
         id: halRemoteComponent
@@ -34,11 +25,14 @@ ColumnLayout {
         containerItem: container
         create: false
         onErrorStringChanged: console.log(errorString)
+        onConnectedChanged: root.wasConnected = true
     }
 
     ColumnLayout {
         id: container
         Layout.fillWidth: true
+        anchors.margins: Screen.pixelDensity * 0.1
+        spacing: Screen.pixelDensity * 0.1
         enabled:  halRemoteComponent.connected
 
         Label {
@@ -46,36 +40,15 @@ ColumnLayout {
             font.bold: true
         }
 
-        Gauge {
-            id: weightGauge
-            Layout.fillWidth: true
-            value: weightSlider.value
-            suffix: "%"
-            valueLabel.text: value.toFixed(decimals) + suffix
-            decimals: 1
-            minimumValueVisible: false
-            maximumValueVisible: false
-            minimumValue: 0
-            maximumValue: 100
-            z0BorderValue: 1
-            z1BorderValue: 1
-            z0Color: "#C9FDFF"
-            z1Color: "#9ADAFF"
-            z2Color: "#9ADAFF"
-
-            MouseArea {
-                anchors.fill: parent
-                onClicked: weightSlider.visible = !weightSlider.visible
-                cursorShape: "PointingHandCursor"
-            }
-        }
-
         HalSlider {
-            id: weightSlider
+            id: fanSpeedSlider
             Layout.fillWidth: true
             name: "weight"
             halPin.direction: HalPin.IO
-            visible: false
+            suffix: "%"
+            valueLabel.text: value.toFixed(decimals) + suffix
+            decimals: 1
+            visible: true 
             minimumValue: 0
             maximumValue: 100
             stepSize: 0.1
@@ -83,7 +56,7 @@ ColumnLayout {
             tickmarksEnabled: false
             minimumValueVisible: false
             maximumValueVisible: false
-            valueVisible: false
+            valueVisible: true
         }
     }
 }

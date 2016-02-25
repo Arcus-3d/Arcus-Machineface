@@ -130,6 +130,7 @@ ApplicationItem {
                     width: parent.height * 0.2
                     height: width
                     axis: 0
+                    visible: false
                     axisName: axisNames[0]
                     color: axisColors[0]
                     fontSize: root.fontSize
@@ -140,6 +141,7 @@ ApplicationItem {
                     anchors.top: parent.top
                     width: parent.height * 0.2
                     height: width
+                    visible: false
                     axis: 1
                     axisName: axisNames[1]
                     color: axisColors[1]
@@ -151,6 +153,7 @@ ApplicationItem {
                     anchors.bottom: parent.bottom
                     width: parent.height * 0.2
                     height: width
+                    visible: false
                     axis: 2
                     axisName: axisNames[2]
                     color: axisColors[2]
