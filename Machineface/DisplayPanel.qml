@@ -38,7 +38,7 @@ ColumnLayout {
         model: 6
         WeightControl {
             componentName: "fdm-ew" + index
-            labelName: "Extruder Weight " + index
+            labelName: "Filament " + index
         }
     }
 
@@ -46,7 +46,7 @@ ColumnLayout {
         model: 1
         WeightControl {
             componentName: "fdm-m" + index
-            labelName: "Mixer Weight " + index
+            labelName: "Mixer " + index
         }
     }
 
