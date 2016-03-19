@@ -35,7 +35,7 @@ ColumnLayout {
         model: 6
         WeightControl {
             componentName: "fdm-ew" + index
-            labelName: "Filament " + index + 1
+            labelName: "Filament " + (index + 1)
         }
     }
 
@@ -48,7 +48,7 @@ ColumnLayout {
         model: 10
         FanControl {
             componentName: "fdm-f" + index
-            labelName: "Fan " + index
+            labelName: "Fan " + (index + 1)
         }
     }
 
@@ -62,7 +62,7 @@ ColumnLayout {
         model: 3
         LightControl {
             componentName: "fdm-l" + index
-            labelName: "Light " + index
+            labelName: "Light " + (index + 1)
         }
     }
 
