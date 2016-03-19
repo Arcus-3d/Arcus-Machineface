@@ -26,28 +26,22 @@ ColumnLayout {
         logHeight: parent.height * 0.25
     }
 
-    Repeater {
-        model: 10
-        TemperatureControl {
-            componentName: "fdm-e" + index
-            labelName: "Extruder " + index
-        }
+    TemperatureControl {
+        componentName: "fdm-e0"
+        labelName: "Extruder"
     }
 
     Repeater {
         model: 6
         WeightControl {
             componentName: "fdm-ew" + index
-            labelName: "Filament " + index
+            labelName: "Filament " + index + 1
         }
     }
 
-    Repeater {
-        model: 1
-        WeightControl {
-            componentName: "fdm-m" + index
-            labelName: "Mixer " + index
-        }
+    WeightControl {
+        componentName: "fdm-m0"
+        labelName: "Mixer"
     }
 
     Repeater {
@@ -58,12 +52,9 @@ ColumnLayout {
         }
     }
 
-    Repeater {
-        model: 10
-        WeightControl {
-            componentName: "fdm-c" + index
-            labelName: "Cooing Pump " + index
-        }
+    WeightControl {
+        componentName: "fdm-c0"
+        labelName: "Cooling"
     }
 
 
