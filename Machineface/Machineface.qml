@@ -110,18 +110,27 @@ ServiceWindow {
 
     DisplayPanel {
         id: displayPanel
-        anchors.right: parent.right
+        anchors.right: filamentPanel.left
         anchors.top: parent.top
         anchors.bottom: applicationProgressBar.top
         width: parent.width * 0.25
-        anchors.margins: Screen.pixelDensity
+        anchors.margins: Screen.pixelDensity * 4
+    }
+
+    FilamentPanel {
+        id: filamentPanel
+        anchors.top: parent.top
+        anchors.right: parent.right
+        anchors.bottom: applicationProgressBar.top
+        width: parent.width * 0.24
+        anchors.margins: Screen.pixelDensity * 4
     }
 
     ApplicationProgressBar {
         id: applicationProgressBar
         anchors.right: parent.right
         anchors.bottom: parent.bottom
-        width: displayPanel.width
+        width: parent.width * 0.5
         anchors.margins: Screen.pixelDensity
     }
 
@@ -131,7 +140,7 @@ ServiceWindow {
         anchors.bottom: parent.bottom
         anchors.top: parent.top
         anchors.margins: Screen.pixelDensity
-        messageWidth: parent.width * 0.25
+        messageWidth: parent.width * 0.5
     }
 }
 

@@ -32,20 +32,7 @@ ColumnLayout {
     }
 
     Repeater {
-        model: 6
-        WeightControl {
-            componentName: "fdm-ew" + index
-            labelName: "Filament " + (index + 1)
-        }
-    }
-
-    WeightControl {
-        componentName: "fdm-m0"
-        labelName: "Mixer"
-    }
-
-    Repeater {
-        model: 10
+        model: 3
         FanControl {
             componentName: "fdm-f" + index
             labelName: "Fan " + (index + 1)
@@ -65,7 +52,10 @@ ColumnLayout {
             labelName: "Light " + (index + 1)
         }
     }
-
+    WeightControl {
+        componentName: "fdm-m0"
+        labelName: "Mixer"
+    }
     Item {
         Layout.fillHeight: true
     }
